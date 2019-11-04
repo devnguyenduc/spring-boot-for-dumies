@@ -3,12 +3,18 @@ package com.a.o.shield.springbootfordummies.config
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.context.properties.ConstructorBinding
 import org.springframework.boot.context.properties.bind.DefaultValue
+import org.springframework.validation.annotation.Validated
+
+import javax.validation.constraints.NotEmpty
+import javax.validation.constraints.NotNull
 
 @ConstructorBinding
 @ConfigurationProperties(prefix = "acme")
+@Validated
 class AcmeConfig {
     final boolean enabled
     final InetAddress remoteAddress
+    @NotNull
     final Security security
 
     AcmeConfig(boolean enabled, InetAddress remoteAddress, Security security) {
@@ -18,6 +24,7 @@ class AcmeConfig {
     }
 
     static class Security {
+        @NotEmpty
         final String username
         final String password
         final List<String> roles
