@@ -10,4 +10,7 @@ custom:
 acme:
   remote-address: 127.0.0.1
   security:
-    roles: ['ADMIN']
+    username: admin
+    roles:
+      - ADMIN
+      - USER
