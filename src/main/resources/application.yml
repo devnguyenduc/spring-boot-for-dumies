@@ -7,3 +7,7 @@ custom:
   servers:
     - dev.example.com
     - another.example.com
+acme:
+  remote-address: 127.0.0.1
+  security:
+    roles: ['ADMIN']
