@@ -20,6 +20,6 @@ class CustomConfigRunner implements CommandLineRunner {
         println "Custom configuration: " + serverConfig.servers
         println "Acme enabled : " + acmeConfig.enabled
         println "Acme remote-address : " + acmeConfig.remoteAddress
-        println "Acme user roles : " + acmeConfig.security.roles
+        println "Acme user roles : " + acmeConfig.security?.roles
     }
 }
