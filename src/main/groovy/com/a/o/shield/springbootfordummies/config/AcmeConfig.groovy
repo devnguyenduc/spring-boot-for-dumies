@@ -14,7 +14,6 @@ import javax.validation.constraints.NotNull
 class AcmeConfig {
     final boolean enabled
     final InetAddress remoteAddress
-    @NotNull
     final Security security
 
     AcmeConfig(boolean enabled, InetAddress remoteAddress, Security security) {
@@ -24,7 +23,6 @@ class AcmeConfig {
     }
 
     static class Security {
-        @NotEmpty
         final String username
         final String password
         final List<String> roles
