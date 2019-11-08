@@ -1,9 +1,11 @@
 package com.a.o.shield.springbootfordummies.accessingdatajpa
 
+import javax.persistence.CascadeType
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
+import javax.persistence.ManyToOne
 
 @Entity
 class Customer {
@@ -15,6 +17,8 @@ class Customer {
     String lastName
     String emailAddress
     int age
+
+    @ManyToOne(cascade = CascadeType.ALL)
     Address address
 
     protected Customer(){}

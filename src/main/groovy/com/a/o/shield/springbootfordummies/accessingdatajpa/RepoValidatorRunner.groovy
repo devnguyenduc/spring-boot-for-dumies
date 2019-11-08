@@ -31,7 +31,7 @@ class RepoValidatorRunner implements CommandLineRunner {
 
         def customers = repository.findAll()
 
-        customers.each {log.info it?.toString()}
+        customers.each {log.info it.toString()}
 
         log.info ""
 
@@ -45,20 +45,20 @@ class RepoValidatorRunner implements CommandLineRunner {
         // fetch customers by last name
         log.info "Customer found with findByLastName('Bauer'):"
         log.info "--------------------------------------------"
-        repository.findByLastName("Bauer").each {log.info it?.toString()}
+        repository.findByLastName("Bauer").each {log.info it.toString()}
 
         log.info "Started using pageable/sortable repository"
         log.info "Find all in page 1"
-        pageableAndSortable.findAll(PageRequest.of(0, 2)).each {println it.toString()}
+        pageableAndSortable.findAll(PageRequest.of(0, 2)).each {log.info it.toString()}
 
         def count = pageableAndSortable.countByLastName "Bauer"
         log.info "Customer countByLastName('Bauer'): " + count
 
         log.info "Started using generic repository"
         log.info "findByEmailAddressAndLastname('jackbauer', 'bauer')"
-        genericRepository.findByEmailAddressAndLastName('jackbauer', 'Bauer').each {print it.toString()}
+        genericRepository.findByEmailAddressAndLastName('jackbauer', 'Bauer').each {log.info it.toString()}
         log.info "findByAddressZipCode(70000)"
-        genericRepository.findByAddressZipCode(70000).each {print it.toString()}
+        genericRepository.findByAddressZipCode(70000).each {log.info it.toString()}
         log.info ""
     }
 }
