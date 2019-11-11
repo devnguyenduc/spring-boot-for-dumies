@@ -4,6 +4,7 @@ import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.CommandLineRunner
 import org.springframework.data.domain.PageRequest
+import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Component
 
 @Component
@@ -32,6 +33,10 @@ class RepoValidatorRunner implements CommandLineRunner {
         def customers = repository.findAll()
 
         customers.each {log.info it.toString()}
+
+        log.info "Customer in the sort fashion"
+        Sort.TypedSort<Customer> customerTypedSort = Sort.sort(Customer.class)
+        repository.findAll(customerTypedSort.by("age").ascending()).each {log.info it.toString()}
 
         log.info ""
 
