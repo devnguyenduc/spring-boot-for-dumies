@@ -17,6 +17,8 @@ class RepoValidatorRunner implements CommandLineRunner {
     CustomerPageableAndSortable pageableAndSortable
     @Autowired
     CustomerGenericRepository genericRepository
+    @Autowired
+    CustomerRepositoryWithLimitedResult customerRepositoryWithLimitedResult
 
     @Override
     void run(String... args) throws Exception {
@@ -65,5 +67,11 @@ class RepoValidatorRunner implements CommandLineRunner {
         log.info "findByAddressZipCode(70000)"
         genericRepository.findByAddressZipCode(70000).each {log.info it.toString()}
         log.info ""
+
+        log.info "Started using repository with limited result"
+        log.info "findFirstByOrderByAgeAsc"
+        customerRepositoryWithLimitedResult.findFirstByOrderByAgeAsc().each {log.info it.toString()}
+        log.info "findTopByOrderByAgeDesc"
+        customerRepositoryWithLimitedResult.findTopByOrderByAgeDesc().each {log.info it.toString()}
     }
 }
