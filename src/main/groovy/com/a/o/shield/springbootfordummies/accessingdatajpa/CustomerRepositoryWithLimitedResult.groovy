@@ -5,7 +5,7 @@ import org.springframework.data.repository.Repository
 interface CustomerRepositoryWithLimitedResult extends Repository<Customer, Long> {
     Customer findFirstByOrderByAgeAsc()
 
-    Customer findTopByOrderByAgeDesc()
+    Optional<Customer> findTopByOrderByAgeDesc()
 
     List<Customer> queryFirst3ByAge(int age)
 

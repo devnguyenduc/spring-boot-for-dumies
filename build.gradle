@@ -24,7 +24,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	runtimeOnly 'org.hsqldb:hsqldb'
+	runtimeOnly 'com.h2database:h2'
 	implementation 'org.codehaus.groovy:groovy'
 	implementation 'javax.validation:validation-api'
 	implementation 'org.springframework.boot:spring-boot-configuration-processor'

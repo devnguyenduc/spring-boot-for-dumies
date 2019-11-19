@@ -20,4 +20,10 @@ class Address {
     Address(int zipCode) {
         this.zipCode = zipCode
     }
+
+    @Override
+    String toString() {
+        return String.format('Address[id=%d, street="%s", wards="%s", district=%s, zipCode=%d]'
+                , id, street, wards, district, zipCode)
+    }
 }
