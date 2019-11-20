@@ -23,9 +23,15 @@ class CustomerController {
     Iterable<Customer> getAll(@RequestParam(value = 'sort', required = false) String sort,
                               @RequestParam(value = 'page', required = false) Integer page,
                               @RequestParam(value = 'pageSize', required = false) Integer pageSize,
-                              @RequestParam(value = 'age', required = false) Optional<Integer> age,
+                              @RequestParam(value = 'age') Integer age,
                               @RequestParam(value = 'firstName', required = false) Optional<String> firstName) {
         PageRequest pageRequest = pagingService.createPagingRequest(sort, page, pageSize)
-        customerService.getCustomers(pageRequest, age, firstName)
+        Date latestVisitedTime = customerService.latestVisitedTime
+        customerService.getCustomers(pageRequest, age, firstName, latestVisitedTime)
+    }
+
+    @GetMapping('latest')
+    Date getLatestVisitedTime() {
+        customerService.getLatestVisitedTime()
     }
 }

@@ -15,12 +15,6 @@ class Address {
     String district
     int zipCode
 
-    protected Address(){}
-
-    Address(int zipCode) {
-        this.zipCode = zipCode
-    }
-
     @Override
     String toString() {
         return String.format('Address[id=%d, street="%s", wards="%s", district=%s, zipCode=%d]'

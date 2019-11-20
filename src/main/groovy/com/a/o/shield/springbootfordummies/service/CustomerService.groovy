@@ -22,31 +22,33 @@ class CustomerService {
     @Autowired
     CustomerRepository customerRepository
 
-    PageImpl<Customer> getCustomers(PageRequest pageRequest, Optional<Integer> age, Optional<String> firstName) {
+    PageImpl<Customer> getCustomers(PageRequest pageRequest, Integer age, Optional<String> firstName, Date latestVisitedTime) {
         PageImpl<Customer> customers = new PageImpl<>([], pageRequest, DEFAULT_TOTAL_IN_PAGE_REQUEST)
-
-        CustomerSpecification customerSpecification = new CustomerSpecification(age, firstName)
+        CustomerSpecification customerSpecification = new CustomerSpecification(latestVisitedTime, age, firstName)
         customers = customerRepository.findAll(customerSpecification, pageRequest)
         LOG.info("Got ${customers.size} customers")
         customers
     }
 
-    private static class CustomerSpecification implements Specification<Customer> {
-        private final Optional<Integer> age
-        private final Optional<String> firstName
+    Date getLatestVisitedTime() {
+        customerRepository.findFirstByOrderByLastVisited().lastVisited
+    }
 
-        CustomerSpecification(Optional<Integer> age, Optional<String> firstName) {
+    private static class CustomerSpecification implements Specification<Customer> {
+        private final Integer age
+        private final Optional<String> firstName
+        private final Date latestVisitedTime
+
+        CustomerSpecification(Date latestVisitedTime, Integer age, Optional<String> firstName) {
             this.age = age
             this.firstName = firstName
+            this.latestVisitedTime = latestVisitedTime
         }
 
         @Override
         Predicate toPredicate(Root<Customer> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-            List<Predicate> predicates = []
-
-            age.map({int givenAge ->
-                predicates << criteriaBuilder.greaterThan(root.get('age'), givenAge)
-            })
+            List<Predicate> predicates = [criteriaBuilder.greaterThan(root.get('age'), age),
+                    criteriaBuilder.equal(root.get('lastVisited'), latestVisitedTime)]
 
             firstName.map({String givenFirstName ->
                 predicates << criteriaBuilder.equal(root.get('firstName'), givenFirstName)

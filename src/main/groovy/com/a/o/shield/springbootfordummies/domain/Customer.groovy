@@ -1,13 +1,13 @@
 package com.a.o.shield.springbootfordummies.domain
 
 
-import javax.persistence.CascadeType
 import javax.persistence.Entity
 import javax.persistence.EnumType
 import javax.persistence.Enumerated
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
+import javax.persistence.JoinColumn
 import javax.persistence.ManyToOne
 import javax.persistence.Temporal
 import javax.persistence.TemporalType
@@ -26,8 +26,10 @@ class Customer {
     @Temporal(TemporalType.DATE)
     Date lastVisited
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn(name = 'address_id', referencedColumnName = 'id')
     Address address
+
     @Enumerated(EnumType.STRING)
     Type type
 

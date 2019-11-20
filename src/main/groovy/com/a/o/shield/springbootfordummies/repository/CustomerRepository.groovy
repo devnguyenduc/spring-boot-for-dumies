@@ -13,4 +13,5 @@ interface CustomerRepository extends CrudRepository<Customer, Long>{
     Customer findById(long id)
 
     PageImpl<Customer> findAll(Specification<Customer> specification, Pageable pagingRequest)
+    Customer findFirstByOrderByLastVisited()
 }
