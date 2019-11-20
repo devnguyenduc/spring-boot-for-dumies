@@ -9,19 +9,25 @@ import javax.persistence.criteria.Root
 
 class CustomerSpecification implements Specification<Customer> {
 
-    private final int age
-    private final String firstName
+    private final Optional<Integer> age
+    private final Optional<String> firstName
 
-    CustomerSpecification(int age, String firstName) {
+    CustomerSpecification(Optional<Integer> age, Optional<String> firstName) {
         this.age = age
         this.firstName = firstName
     }
 
     @Override
     Predicate toPredicate(Root<Customer> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-        List<Predicate> predicates = [criteriaBuilder.greaterThan(root.get('age'), age)]
+        List<Predicate> predicates = []
 
-        predicates << criteriaBuilder.equal(root.get('firstName'), firstName)
+        age.map({int givenAge ->
+            predicates << criteriaBuilder.greaterThan(root.get('age'), givenAge)
+        })
+
+        firstName.map({String givenFirstName ->
+            predicates << criteriaBuilder.equal(root.get('firstName'), givenFirstName)
+        })
 
         criteriaBuilder & (predicates as Predicate[])
     }
