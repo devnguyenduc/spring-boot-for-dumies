@@ -8,5 +8,4 @@ class SpringBootForDummiesApplication {
 	static void main(String[] args) {
 		SpringApplication.run(SpringBootForDummiesApplication, args)
 	}
-
 }

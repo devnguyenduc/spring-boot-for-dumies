@@ -13,6 +13,8 @@ import javax.persistence.Id
 import javax.persistence.JoinColumn
 import javax.persistence.ManyToMany
 import javax.persistence.ManyToOne
+import javax.persistence.Temporal
+import javax.persistence.TemporalType
 
 @Entity
 class Customer {
@@ -24,6 +26,8 @@ class Customer {
     String lastName
     String emailAddress
     int age
+
+    @Temporal(TemporalType.DATE)
     Date lastVisited
 
     @ManyToOne(cascade = CascadeType.ALL)
