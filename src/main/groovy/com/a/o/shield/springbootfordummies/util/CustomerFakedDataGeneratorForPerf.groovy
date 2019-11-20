@@ -1,13 +1,15 @@
 package com.a.o.shield.springbootfordummies.accessingdatajpa
 
+import com.a.o.shield.springbootfordummies.domain.Address
+import com.a.o.shield.springbootfordummies.domain.Customer
+import com.a.o.shield.springbootfordummies.repository.CustomerPageableAndSortable
+import com.a.o.shield.springbootfordummies.repository.CustomerRepository
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.CommandLineRunner
-import org.springframework.core.annotation.Order
 import org.springframework.data.domain.PageImpl
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Pageable
-import org.springframework.stereotype.Component
 
 class CustomerFakedDataGeneratorForPerf implements CommandLineRunner {
     private static final def log = LoggerFactory.getLogger CustomerFakedDataGeneratorForPerf.class

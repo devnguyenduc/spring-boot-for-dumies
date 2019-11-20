@@ -1,6 +1,6 @@
 package com.a.o.shield.springbootfordummies.service
 
-import com.a.o.shield.springbootfordummies.accessingdatajpa.Customer
+import com.a.o.shield.springbootfordummies.domain.Customer
 import org.slf4j.LoggerFactory
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Pageable

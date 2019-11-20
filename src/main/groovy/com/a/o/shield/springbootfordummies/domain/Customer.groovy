@@ -1,7 +1,5 @@
-package com.a.o.shield.springbootfordummies.accessingdatajpa
+package com.a.o.shield.springbootfordummies.domain
 
-import com.fasterxml.jackson.annotation.JsonGetter
-import com.fasterxml.jackson.annotation.JsonIgnore
 
 import javax.persistence.CascadeType
 import javax.persistence.Entity
@@ -10,8 +8,6 @@ import javax.persistence.Enumerated
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
-import javax.persistence.JoinColumn
-import javax.persistence.ManyToMany
 import javax.persistence.ManyToOne
 import javax.persistence.Temporal
 import javax.persistence.TemporalType

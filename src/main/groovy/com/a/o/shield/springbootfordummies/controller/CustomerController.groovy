@@ -1,6 +1,6 @@
-package com.a.o.shield.springbootfordummies.controllers
+package com.a.o.shield.springbootfordummies.controller
 
-import com.a.o.shield.springbootfordummies.accessingdatajpa.Customer
+import com.a.o.shield.springbootfordummies.domain.Customer
 import com.a.o.shield.springbootfordummies.service.CustomerService
 import com.a.o.shield.springbootfordummies.service.PagingService
 import org.springframework.beans.factory.annotation.Autowired

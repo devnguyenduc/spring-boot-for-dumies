@@ -1,5 +1,9 @@
 package com.a.o.shield.springbootfordummies.accessingdatajpa
 
+import com.a.o.shield.springbootfordummies.domain.Address
+import com.a.o.shield.springbootfordummies.domain.Customer
+import com.a.o.shield.springbootfordummies.domain.Type
+import com.a.o.shield.springbootfordummies.repository.CustomerRepository
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.CommandLineRunner

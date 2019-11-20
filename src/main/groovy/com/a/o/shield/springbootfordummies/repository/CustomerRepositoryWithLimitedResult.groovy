@@ -1,5 +1,6 @@
-package com.a.o.shield.springbootfordummies.accessingdatajpa
+package com.a.o.shield.springbootfordummies.repository
 
+import com.a.o.shield.springbootfordummies.domain.Customer
 import org.springframework.data.repository.Repository
 
 interface CustomerRepositoryWithLimitedResult extends Repository<Customer, Long> {

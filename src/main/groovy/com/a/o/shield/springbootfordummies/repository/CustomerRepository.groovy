@@ -1,5 +1,7 @@
-package com.a.o.shield.springbootfordummies.accessingdatajpa
+package com.a.o.shield.springbootfordummies.repository
 
+import com.a.o.shield.springbootfordummies.domain.Customer
+import com.a.o.shield.springbootfordummies.domain.Type
 import org.springframework.data.domain.PageImpl
 import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.domain.Specification

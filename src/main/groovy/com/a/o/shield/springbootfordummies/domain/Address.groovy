@@ -1,4 +1,4 @@
-package com.a.o.shield.springbootfordummies.accessingdatajpa
+package com.a.o.shield.springbootfordummies.domain
 
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
