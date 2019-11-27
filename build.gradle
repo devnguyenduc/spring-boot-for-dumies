@@ -26,6 +26,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	runtimeOnly 'com.h2database:h2'
 	implementation 'org.codehaus.groovy:groovy'
+	implementation 'org.codehaus.groovy:groovy-json'
 	implementation 'javax.validation:validation-api'
 	implementation 'org.springframework.boot:spring-boot-configuration-processor'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'

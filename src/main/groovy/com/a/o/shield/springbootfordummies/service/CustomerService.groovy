@@ -34,6 +34,10 @@ class CustomerService {
         customerRepository.findFirstByOrderByLastVisited().lastVisited
     }
 
+    Customer createCustomer(Customer customer) {
+        customerRepository.save(customer)
+    }
+
     private static class CustomerSpecification implements Specification<Customer> {
         private final Integer age
         private final Optional<String> firstName

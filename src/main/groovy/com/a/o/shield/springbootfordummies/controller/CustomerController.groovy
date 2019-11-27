@@ -5,10 +5,16 @@ import com.a.o.shield.springbootfordummies.service.CustomerService
 import com.a.o.shield.springbootfordummies.service.PagingService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.PageRequest
+import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
+
+import javax.validation.Valid
 
 @RestController
 @RequestMapping('/customer')
@@ -18,6 +24,12 @@ class CustomerController {
 
     @Autowired
     PagingService pagingService
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    Customer createCustomer(@RequestBody @Valid Customer customer) {
+        customerService.createCustomer(customer)
+    }
 
     @GetMapping
     Iterable<Customer> getAll(@RequestParam(value = 'sort', required = false) String sort,
