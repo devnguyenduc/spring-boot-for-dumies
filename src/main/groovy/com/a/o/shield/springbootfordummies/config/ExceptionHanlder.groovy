@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler
 
 @ControllerAdvice
 class ExceptionHanlder {
+
     @ExceptionHandler(HttpMessageNotReadableException)
     ResponseEntity handleHttpMessageNotReadableException() {
         new ResponseEntity(new JsonBuilder("Invalid"), HttpStatus.BAD_REQUEST)

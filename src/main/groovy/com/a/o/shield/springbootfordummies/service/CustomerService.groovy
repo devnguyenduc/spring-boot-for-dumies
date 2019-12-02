@@ -1,6 +1,7 @@
 package com.a.o.shield.springbootfordummies.service
 
 import com.a.o.shield.springbootfordummies.domain.Customer
+import com.a.o.shield.springbootfordummies.domain.Type
 import com.a.o.shield.springbootfordummies.repository.CustomerRepository
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
@@ -36,6 +37,10 @@ class CustomerService {
 
     Customer createCustomer(Customer customer) {
         customerRepository.save(customer)
+    }
+
+    List<Object> customerTypes() {
+        Type.values().toList()
     }
 
     private static class CustomerSpecification implements Specification<Customer> {
