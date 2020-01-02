@@ -8,3 +8,7 @@ This is for commit 3
 This is for push 1
 This is for push 2
 THis is for push 3
+
+This is for rebase 1
+This is for rebase 2
+This is for rebase 3
